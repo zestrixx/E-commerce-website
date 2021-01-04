@@ -1,15 +1,19 @@
 {% extends 'shop/basic.html' %}
 {% block title %} Contact | nStock {% endblock %}
-
+{% block css %}
+    .footer{
+    margin-top: 70px;
+    }
+{% endblock %}
 {% block body %}
 
   {% include 'shop/msg.html' %}
 
 
-  <div class="my-4" style="background-color: #28a745; height:40px; color:white"><h4 class="text-center" style="margin-bottom:0px; padding-top: 5px;">Facing Problems? Feel Free To Contact Us.</h4></div>
+  <div class="mb-4" style="background-color: #28a745; height:40px; color:white"><h4 class="text-center" style="margin-bottom:0px; padding-top: 5px;">Facing Problems? Feel Free To Contact Us.</h4></div>
   <div class="container">
-    <form action="/shop/contact/" method="post">{% csrf_token %}
-
+    <form action="/shop/contact/" method="post">
+      {% csrf_token %}
       <div class="form-group">
         <label for="name"><h6>Name</h6></label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>

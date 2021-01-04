@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'shop.apps.ShopConfig',
-    'register.apps.RegisterConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'crispy_forms',

@@ -33,8 +33,8 @@ def about(request):
 
 
 def contact(request):
-    if not request.user.is_authenticated:
-        return redirect('Login')
+    # if not request.user.is_authenticated:
+    #     return redirect('Login')
     if request.method == 'POST':
         name = request.POST.get('name', "")
         phone = request.POST.get('phone', "")
@@ -47,8 +47,8 @@ def contact(request):
 
 
 def tracker(request):
-    if not request.user.is_authenticated:
-        return redirect('Login')
+    # if not request.user.is_authenticated:
+    #     return redirect('Login')
     if request.method == "POST":
         orderId = request.POST.get('orderId', "")
         phone = request.POST.get('phone', "")
@@ -103,8 +103,8 @@ def productView(request, proid):
 
 
 def checkout(request):
-    if not request.user.is_authenticated:
-        return redirect('Login')
+    # if not request.user.is_authenticated:
+    #     return redirect('Login')
     if request.method == 'POST':
         itemsJson = request.POST.get('itemsJson', "")
         name = request.POST.get('name', "")
