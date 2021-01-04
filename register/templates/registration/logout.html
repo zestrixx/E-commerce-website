@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/basic.html' %}
+{% block title %}Login | nStock{% endblock %}
+{% block css %}
+    .footer{
+    margin-top: 540px;
+    }
+{% endblock %}
+{% block body %}
+<div class="container my-4">
 
-</body>
-</html>
+    <h3>You have been logged out of nStock.</h3>
+    <p>Login again to shop <a href="/shop/login/" class="btn btn-primary button">Login</a></p>
+</div>
+{% endblock %}

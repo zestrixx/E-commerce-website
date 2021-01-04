@@ -76,10 +76,14 @@
                 Welcome <b>User</b>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                {% else %}
                 <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                 <li><a class="dropdown-item" href="/shop/register">Sign Up</a></li>
+                {% endif %}
               </ul>
-            </li>
+          </li>
         </ul>
 
         <form method="get" action="/shop/search/" class="form-inline my-2 my-lg-0">
