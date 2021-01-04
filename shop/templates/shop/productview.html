@@ -1,0 +1,58 @@
+{% extends 'shop/basic.html' %}
+{% block title %} {{product.product_name}} | nStock {% endblock %}
+{% block css %}
+    .footer {
+    margin-top: 160px;
+    }
+{% endblock %}
+{% block body %}
+{% load static %}
+<div style="margin-top: 60px; margin-bottom: 160px;" class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+               <img src="/media//{{product.image}}" width="270px" height="385px">
+
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h5>{{product.product_name}}</h5>
+            <p><b> Rs.{{product.price}}</b></p>
+            <p>{{product.desc}}</p>
+
+            <div class="row ml-8">
+                <a href="/shop/checkout/"><button class="btn btn-primary mx-3 my-4 cart button">Buy Now</button></a>
+                <span id="divpr{{product.id}}" class="divpr">
+                    <button id="pr{{product.id}}" class="btn btn-primary mx-4 my-4 cart button">Add To Cart</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block js %}
+
+    if (localStorage.getItem('cart') == null)
+    {
+        var cart = {};
+    } else
+    {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    var sum = 0;
+    for (item in cart)
+    {
+        let qty = cart[item][0];
+        sum = sum + qty;
+    }
+    document.getElementById('cart').innerHTML = sum;
+
+{% endblock %}
+
+

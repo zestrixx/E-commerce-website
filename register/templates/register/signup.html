@@ -1,0 +1,17 @@
+{% extends 'shop/basic.html' %}
+{% block title %}Register Account | nStock{% endblock %}
+{% block css %}
+    .footer{
+    margin-top: 45px;
+    }
+{% endblock %}
+{% block body %}
+{% load crispy_forms_tags %}
+    <div class="container my-4">
+        <form method="post" class="form-group">{% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary button">Register</button>
+            <P class="my-2">Already have an account? <a href="/shop/login">Login</a></P>
+        </form>
+    </div>
+{% endblock %}

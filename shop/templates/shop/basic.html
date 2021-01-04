@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+    <style>
+    .navbar-light .navbar-nav .nav-link:hover {
+      color: #28a745;
+    }
+
+    .dropdown-item:hover {
+      color: #28a745;
+    }
+
+    .button {
+      background-color: #28a745;
+    }
+
+    .button:hover {
+      background-color: green;
+    }
+
+    .footer {
+      margin-top: 60px;
+    }
+
+    {% block css %}
+
+    {% endblock %}
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
+      <a class="navbar-brand" href="\"><strong style="color:#28a745">nStock</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="\">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/about">About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/contact">Contact Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/tracker">Track Your Order</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Shop By Category
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/shop/menfashion/">Men</a>
+              <a class="dropdown-item" href="/shop/womenfashion/">Women</a>
+              <a class="dropdown-item" href="/shop">Recommended Items</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-expanded="false">
+                Welcome <b>User</b>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <li><a class="dropdown-item" href="/shop/login">Login</a></li>
+                <li><a class="dropdown-item" href="/shop/register">Sign Up</a></li>
+              </ul>
+            </li>
+        </ul>
+
+        <form method="get" action="/shop/search/" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <button type="button" class="btn btn-secondary mx-2 button" id="popcart" data-container="body"
+              data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+              sagittis lacus vel augue laoreet rutrum faucibus.">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" fill="currentColor" class="bi bi-cart-fill mb-1"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+          </svg>
+          <span id="cart">0</span>
+        </button>
+      </div>
+    </nav>
+
+  {% block body %} {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <footer class="footer py-4 bg-light">
+    <!--      <p class="float-right"><a href="#">Back to top</a></p>-->
+      <div class="container text-center">
+        <span class="text-muted"><strong style="color: #28a745;">nStock</strong> &copy;copyright 2021-2022 | Developed By
+          - <a href="https://www.instagram.com/i.g_leo/"><strong style="color: #28a745;">Mayank</strong></a> | All Rights
+          Reserved.</span>
+      </div>
+    </footer>
+
+    <script>
+      {% block js %}
+      {% endblock %}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Payment status | nStock{% endblock %}
+{% block css %}
+    .footer{
+    margin-top: 365px;
+    }
+{% endblock %}
+{% block body %}
+<div class="container text-center">
+    <div class="col my-4">
+        <h2 class="my-4">Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+        <h4 style="color:#28a745;">ORDER SUCCESS</h4>
+        <h5 style="color:#28a745;">Use the above order id to track your order!</h5>
+        <a href="\" class="btn btn-primary my-4 button">Home</a>
+        {% else %}
+        <h4 style="color:red;">ORDER FAILURE</h4>
+        <h5 style="color:red;">{{response.RESPMSG}}</h5>
+        <a href="/shop/checkout/" class="btn btn-primary my-4 button">Try Again</a>
+        {% endif%}
+
+    </div>
+
+</div>
+{% endblock %}

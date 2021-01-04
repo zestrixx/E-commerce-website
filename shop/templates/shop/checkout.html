@@ -1,0 +1,120 @@
+{% extends 'shop/basic.html' %}
+{%block title%}Checkout | nStock{%endblock%}
+
+{% block body %}
+
+    <div class="container">
+        <div class="col my-4">
+            <h4 style="color: #28a745;"> Step 1 - Review Your Cart Items </h4>
+            <div class="my-4">
+                <ul class="list-group" id='items'>
+
+                </ul>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <li class="breadcrumb-item" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalPrice"></span></b>. Enter your details below to place your order :)</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col my-4">
+            <h4 class="mb-3" style="color: #28a745;"> Step 2 - Enter Your Address</h4>
+            <form method="post" action="/shop/checkout/"> {% csrf_token %}
+                <input type="hidden" name="itemsJson" id="itemsJson">
+                <input type="hidden" name="amount" id="amount">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">Mobile</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Contact Number" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Apartment/Building/Plot" required>
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address Line 2</label>
+                    <input type="text" class="form-control" name="localaddress" id="address2" placeholder="Your Local Area">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input required type="text" name="city" class="form-control" id="city">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="state">State</label>
+                        <input required type="text" name="state" class="form-control" id="state" placeholder="Enter State">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="pincode">Pin Code</label>
+                        <input required type="text" name="pincode" class="form-control" id="pincode">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary button" id="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+//if object is empty
+
+    var totalPrice = 0;
+    var sum = 0;
+    if ($.isEmptyObject(cart))
+    {
+        mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+        $('#items').append(mystr);
+        document.getElementById('submit').disabled = true;
+
+    }
+    else
+    {
+        for (item in cart)
+        {
+            let name = cart[item][1];
+            let qty = cart[item][0];
+            let itemPrice = cart[item][2];
+            sum = sum + qty;
+            totalPrice = totalPrice + qty * itemPrice;
+            tiprice = qty*itemPrice;
+            mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${name}
+                        <span style="background-color: #28a745; margin-left: auto;" class="badge badge-primary badge-pill">${qty}</span>
+                        <b>*</b><span style="background-color: #28a745;" class="badge badge-primary badge-pill">${itemPrice}</span>
+                        <b>=</b><span style="background-color: #28a745;" class="badge badge-primary badge-pill">${tiprice}</span>
+                    </li>`
+            $('#items').append(mystr);
+        }
+        $('#submit').prop('disabled', false);
+    }
+    document.getElementById('cart').innerHTML = sum;
+    document.getElementById('totalPrice').innerHTML = totalPrice;
+
+//popup a confirmation message after placing order and clearing the cart
+
+    $('#itemsJson').val(JSON.stringify(cart));
+    {% if thank %}
+        alert("Thank You! Your order has been placed. Order id is {{id}}. Use it to track your order :)")
+        localStorage.clear();
+        document.location="/shop";
+    {%endif%}
+
+//assigning the value of totalPrice to amount
+
+    $('#amount').val($('#totalPrice').html())
+
+{% endblock %}
