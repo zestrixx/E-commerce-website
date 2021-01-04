@@ -1,7 +1,8 @@
 import json
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Contact, Order, OrderUpdate, BannerImage
 from math import ceil
 from django.views.decorators.csrf import csrf_exempt
@@ -32,6 +33,8 @@ def about(request):
 
 
 def contact(request):
+    if not request.user.is_authenticated:
+        return redirect('Login')
     if request.method == 'POST':
         name = request.POST.get('name', "")
         phone = request.POST.get('phone', "")
@@ -44,6 +47,8 @@ def contact(request):
 
 
 def tracker(request):
+    if not request.user.is_authenticated:
+        return redirect('Login')
     if request.method == "POST":
         orderId = request.POST.get('orderId', "")
         phone = request.POST.get('phone', "")
@@ -98,6 +103,8 @@ def productView(request, proid):
 
 
 def checkout(request):
+    if not request.user.is_authenticated:
+        return redirect('Login')
     if request.method == 'POST':
         itemsJson = request.POST.get('itemsJson', "")
         name = request.POST.get('name', "")
