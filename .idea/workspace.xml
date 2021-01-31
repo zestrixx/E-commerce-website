@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="9943d92b-9e8f-42ab-b38e-a2a9ac4ac89e" name="Default Changelist" comment="Modified a little bit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eWeb/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/eWeb/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eWeb/shop/templates/shop/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/eWeb/shop/templates/shop/checkout.html" afterDir="false" />
     </list>
+=======
+    <list default="true" id="9943d92b-9e8f-42ab-b38e-a2a9ac4ac89e" name="Default Changelist" comment="Modified a little bit" />
+>>>>>>> origin/master
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +70,7 @@
       <option name="project" value="LOCAL" />
       <updated>1612040073486</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00005" summary="Modified a little bit">
       <created>1612040203079</created>
       <option name="number" value="00005" />
@@ -81,6 +86,9 @@
       <updated>1612041760936</updated>
     </task>
     <option name="localTasksCounter" value="7" />
+=======
+    <option name="localTasksCounter" value="5" />
+>>>>>>> origin/master
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
